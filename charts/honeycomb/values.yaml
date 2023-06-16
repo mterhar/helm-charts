@@ -35,7 +35,7 @@ metrics:
   metricGroups:
     - node
     - pod
-  # interval: 20 ## honeycomb-agent defaults to 10
+  # interval: 20s ## honeycomb-agent defaults to 10s
   # omitLabels:
   #   - "private_label"
   # additionalFields:
@@ -96,6 +96,11 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+# Field for adding additional environment variables
+additionalEnv: {}
+#  - name: var_name
+#    value: var_value
 
 nodeSelector: {}
 

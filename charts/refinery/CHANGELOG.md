@@ -1,5 +1,33 @@
 # Refinery Helm Chart Changelog
 
+## Refinery v1.19.1
+  - feat: Add the ability to create your own Secret Provider (#243) | @RainofTerra
+  - chore: Allow users to add annotations for refinery and collector deployments (#236) | @suryapandian
+
+## Refinery v1.19.0
+  - chore: bump appVersion to 1.21 (#235) | @fchikwekwe
+
+## Refinery v1.18.0
+  - maint: Update refinery chart to use refinery [1.20.0](https://github.com/honeycombio/refinery/releases/tag/v1.20.0) (#227) | @TylerHelmuth
+    - This is a significant and exciting upgrade of Refinery.  For more details see [Refinery's Release notes](https://github.com/honeycombio/refinery/blob/main/RELEASE_NOTES.md#version-1200).
+  - chore: add nodeport to the service.yaml (#222) | @fchikwekwe
+
+## Refinery v1.17.0
+  - fix: Updated ordering of CPU/Memory resource metrics (#217) | @robiball
+  - maint: Update HPAs to autoscaling/v2 (#215) | @robiball
+    - This means that the chart now only supports k8s 1.23+
+
+## Refinery v1.16.0
+
+- bump app version to 1.19.0 (#203) | [@TylerHelmuth](https://github.com/TylerHelmuth)
+  - Add command to query config metadata
+  - New cache management strategy
+
+## Refinery v1.15.1
+
+- Avoid checksum/config collision (#197) | @mterhar
+- Update to set redis host based on release name (#194) | @TylerHelmuth
+
 ## Refinery v1.15.0
 
 - Bump Refinery version to 1.18.0 (#188) | [@TylerHelmuth](https://github.com/TylerHelmuth)

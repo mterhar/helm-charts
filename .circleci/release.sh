@@ -6,10 +6,8 @@ set -o pipefail
 
 : "${GITHUB_TOKEN:?Environment variable GITHUB_TOKEN must be set}"
 : "${GIT_USERNAME:?Environment variable GIT_USERNAME must be set}"
-: "${GIT_REPOSITORY_URL:?Environment variable GIT_REPOSITORY_URL must be set}"
 : "${GIT_REPOSITORY_OWNER:?Environment variable GIT_REPOSITORY_OWNER must be set}"
 : "${GIT_REPOSITORY_NAME:?Environment variable GIT_REPOSITORY_NAME must be set}"
-: "${CHARTS_REPO:?Environment variable CHARTS_REPO must be set}"
 
 readonly REPO_ROOT="${REPO_ROOT:-$(git rev-parse --show-toplevel)}"
 
@@ -66,9 +64,11 @@ release_charts() {
 
 update_index() {
   git config user.name "$GIT_USERNAME"
+  git config --global --unset url.ssh://git@github.com.insteadof
+  git remote add origin-https "https://github.com/$GIT_REPOSITORY_OWNER/$GIT_REPOSITORY_NAME.git"
 
   mkdir .cr-index
-  cr index --charts-repo "$CHARTS_REPO" --git-repo "$GIT_REPOSITORY_NAME" --owner "$GIT_REPOSITORY_OWNER" --token "$GITHUB_TOKEN" --push
+  cr index --git-repo "$GIT_REPOSITORY_NAME" --owner "$GIT_REPOSITORY_OWNER" --token "$GITHUB_TOKEN" --remote "origin-https" --push
 }
 
 main
